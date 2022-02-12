@@ -20,10 +20,8 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to GymRNK
+          Welcome to GymRank
         </h1>
-        
-        
 
         <div className={styles.grid}>
         <GymList/>

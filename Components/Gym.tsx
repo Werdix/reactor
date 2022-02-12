@@ -3,15 +3,15 @@ import styled from "styled-components"
 const GymBox = styled.div`
     border: solid 12px black;
     border-radius: 10px;
-    width:370px;
-    height: 250px;
-    margin: 25px
+    width: 400px;
+    height: 280px;
+    margin: 30px 0px 0px 0px; 
+    
 `
 
 export const Gym :FC= () =>{
-    return(<GymBox>
+    return(
+    <GymBox>
         
-    </GymBox>
-    
-    )
+    </GymBox>)
 }

@@ -6,27 +6,22 @@ export const GymList:FC = () =>{
     type FakeTitleData = {
         id:string;
         name:string;
+        rate:number;
+        address:string;
     }
-const fakeData = [{
+const fakeData:[FakeTitleData] = [{
     id:"21",
-    name:"Suncity"
-},
-{
-    id:"26",
-    name:"Gym22"
+    name:"Suncity",
+    rate:78,
+    address:"Praha"
 },{
-    id:"24",
-    name:"MacakGym"
+
 }]
-
+    
 return(
-fakeData.forEach(element => {
     <Gym>
-        <h3>{element.name}</h3>
-    </Gym>
-})
-
-
-
-)
-}
+        
+        <h3>{fakeData[0].name}</h3>
+        <h5>Rating:{fakeData[0].rate}%</h5>
+    </Gym> 
+    )} 
