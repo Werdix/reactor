@@ -50,6 +50,11 @@
   text-align: center;
 }
 
+.smallTitle{
+  margin-left: 160px;
+  font-size: 3.6rem;
+}
+
 .description {
   margin: 4rem 0;
   line-height: 1.5;
