@@ -17,13 +17,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
      
-     
-
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to GymRate!
         </h1>
-        <h4>Find your Gym and Rate! </h4>
+        <h4>Find your Gym and Rate!</h4>
 
         <div>
         <h1 className={styles.smallTitle}>Top Rating</h1>

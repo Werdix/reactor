@@ -2,7 +2,7 @@ import React,{FC,useEffect,useState} from "react";
 export const Sidebar = () =>{
 
     const [opened,setIsOpened] = useState(false);
-    const[width, setWidth] = useState('200px'); //držet stav komponenty
+    const[width, setWidth] = useState('200px'); 
     const[color, setColor] = useState('LightGray');
 
     useEffect(()=>{
