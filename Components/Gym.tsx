@@ -16,7 +16,7 @@ const GymBox = styled.div`
         cursor: pointer;
     }
     `;
-    
+  
 const RateButton = styled.button`
 width: 55px;
 height: 30px;
@@ -53,7 +53,7 @@ export const Gym :FC= () =>{
                     height:385px;
                     }
                     .infoOpened{
-                        
+                        display:block
                     }
                     .notOpened{
                     width: 340px;
