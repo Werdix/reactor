@@ -19,6 +19,6 @@ export const Slider : FC = () =>{
                 setSliderValue(
                     parseInt(ev.target.value, 10),
                 )}}></input>
-        <div>Your Rating!: {rateValue}</div>
+        <div>Your Rating!: {rateValue} %</div>
     </RateSlider>)   
 }

@@ -3,5 +3,7 @@ import { Gym } from "./Gym";
 
 
 export const GymList:FC = () =>{
-    return(<Gym/>)
+    return(
+    <Gym/>
+        )
 }
