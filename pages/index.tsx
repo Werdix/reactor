@@ -5,6 +5,7 @@ import { Sidebar } from '../Components/Sidebar'
 import styles from '../styles/Home.module.css'
 import { ToDo } from '../Components/to-do'
 import {Gym} from '../Components/Gym'
+
 import { GymList } from '../Components/GymList'
 
 
@@ -26,9 +27,6 @@ const Home: NextPage = () => {
         <div>
         <h1 className={styles.smallTitle}>Top Rating</h1>
           <div className={styles.grid}>
-          <GymList/>
-          <GymList/>
-          <GymList/>
           <GymList/>
           </div>
         </div>
