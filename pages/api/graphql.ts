@@ -1,3 +1,4 @@
+import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import {
     ApolloServer,
     gql,
@@ -11,21 +12,26 @@ import {
   // import { resolvers } from '../../serverApi/resolvers';
   const typeDefs = gql`
     type Query {
-      users: [User!]!
+      Gyms: [Gym!]!
     }
-    type User {
-      name: String
+    type Gym {
+    id: Int!
+    gymName: String
+    countRate:Int
+    score: Int
+    info: String
+    address: String 
     }
   `;
   const resolvers = {
     Query: {
-      users(parent:any, args:any, context:any) {
+      Gyms(parent:any, args:any, context:any) {
         return [{ name: "Nextjs" }];
       },
     },
   };
   
-  const apolloServer = new ApolloServer({ typeDefs, resolvers });
+  const apolloServer = new ApolloServer({ typeDefs, resolvers, plugins:[ApolloServerPluginLandingPageGraphQLPlayground()] });
   const startServer = apolloServer.start();
   const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader("Access-Control-Allow-Credentials", "true");

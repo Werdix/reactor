@@ -10,9 +10,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #3D3B3C;
+  background-color: #361d32;
 }
-
+.description1{
+  color: #f55951;
+}
 .footer {
   display: flex;
   flex: 1;
@@ -33,7 +35,11 @@
   color: #0070f3;
   text-decoration: none;
 }
-
+.Rating{
+  font-size: 18px;
+  opacity: 60%;
+  font-weight:500;
+}
 .title a:hover,
 .title a:focus,
 .title a:active {

@@ -2,18 +2,19 @@ import { FC,useState } from "react";
 import styled from "styled-components";
 const RateSlider = styled.div`
     
-    .slider{
+    #slider{
         background-color: #5F5B6B;
         height: 15px;
+        margin-top: -50px;
     }
 `;
 
 export const Slider : FC = () =>{
     
     const [rateValue,setSliderValue] = useState(1) 
-    
+    const [isOpened, divMaximize] = useState(false);
     return(<RateSlider>
-        <input className="slider" type="range" min={1} max={100} value={rateValue} onChange={(
+        <input className="notOpened" id="#slider" type="range" min={1} max={100} value={rateValue} onChange={(
                 ev: React.ChangeEvent<HTMLInputElement>,
             ): void => {
                 setSliderValue(

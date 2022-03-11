@@ -5,6 +5,7 @@ import { Sidebar } from '../Components/Sidebar'
 import styles from '../styles/Home.module.css'
 import { ToDo } from '../Components/to-do'
 import {Gym} from '../Components/Gym'
+import {SearchBar} from '../Components/SearchBar';
 
 import { GymList } from '../Components/GymList'
 
@@ -22,7 +23,8 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to GymRate!
         </h1>
-        <h4>Find your Gym and Rate!</h4>
+        <h4 className={styles.description1}>Find your Gym and Rate!</h4>
+        <SearchBar/>
 
         <div>
         <h1 className={styles.smallTitle}>Top Rating</h1>

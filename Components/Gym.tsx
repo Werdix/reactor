@@ -1,18 +1,21 @@
-import { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Slider } from "../Components/Slider";
+import styles from '../styles/Home.module.css';
+
 type State = 'opened' | 'closed';
 
 const GymBox = styled.div`
-    border: solid 8px #7F7979;
+    /*border: solid 3px #7F7979;*/
+    
     border-radius: 10px;
-    width: 340px;
-    height: 220px;
+    width: 360px;
+    height: 240px;
     margin: 0px 60px 60px 40px; 
-    background-color: #5F5B6B;
+    background-color: #543c52;
     padding-left:35px;
     color: white;
-
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) ;
     &:hover{
         cursor: pointer;
     }
@@ -21,17 +24,19 @@ const GymBox = styled.div`
 const RateButton = styled.button`
 width: 55px;
 height: 30px;
-background-color: #3D3B3C;
-color: #C1BDB3;
+background-color: #f55951;
+color: #f1e8e6;
 font-weight: bold;
 font-family: sans-serif;
 border-width: 2px;
 border-radius: 13px;
+margin-top:12px;
 `;
 
 export const Gym: FC = () => {
 
     const [isOpened, divMaximize] = useState(false);
+    
     const gymDetails = [{
         id: 1,
         gymName: "Suncity",
@@ -55,31 +60,32 @@ export const Gym: FC = () => {
         info: 'Lorem ipsum'
     }];
     return (
-        gymDetails.map(({ id, gymName, score, countRate, address, info }) => (
-            <GymBox onClick={() => divMaximize((prev) => !prev)} className={isOpened ? "isOpened" : 'notOpened'}><h2 key={id}>{gymName}</h2>
-                <h5 key={id}>Rating: {Math.round(score / countRate)}%</h5>
+        gymDetails.map(({ id, gymName, score, countRate, address, info }) => (<>
+            <GymBox key={id} onClick={() => divMaximize((prev) => !prev)} className={isOpened ? 'isOpened' : 'notOpened'}><h2 key={id}>{gymName}</h2>
+                <h5 className={styles.Rating} key={id}>Rating: {Math.round(score / countRate)}%</h5>
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Info: {info}</div>
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Adresa: {address}</div>
-                <Slider></Slider>
+                </GymBox>
+                <Slider/>
                 <RateButton type="button">Rate!</RateButton>
                 <style jsx>{`
                     .isOpened{
-                    width:175%;
-                    height:175%;
+                    width:220%;
+                    height:220%;
                     }
                     .infoOpened{
                     display:block;
                     font-size:8;
                     }
                     .notOpened{
-                    width: 100%;
-                    height: 100%;
+                    width: 110%;
+                    height: 110%;
                     }
                     .infoClosed{
                         display:none; 
                     }   
                 `}</style>
-            </GymBox>
+            </>
         ))
     )
 }
