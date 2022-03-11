@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { Slider } from "../Components/Slider";
 import styles from '../styles/Home.module.css';
 
-type State = 'opened' | 'closed';
-
 const GymBox = styled.div`
-    /*border: solid 3px #7F7979;*/
+    
     
     border-radius: 10px;
     width: 360px;
@@ -65,9 +63,9 @@ export const Gym: FC = () => {
                 <h5 className={styles.Rating} key={id}>Rating: {Math.round(score / countRate)}%</h5>
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Info: {info}</div>
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Adresa: {address}</div>
-                </GymBox>
                 <Slider/>
                 <RateButton type="button">Rate!</RateButton>
+                </GymBox>
                 <style jsx>{`
                     .isOpened{
                     width:220%;

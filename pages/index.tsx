@@ -24,7 +24,7 @@ const Home: NextPage = () => {
           Welcome to GymRate!
         </h1>
         <h4 className={styles.description1}>Find your Gym and Rate!</h4>
-        <SearchBar/>
+        
 
         <div>
         <h1 className={styles.smallTitle}>Top Rating</h1>
