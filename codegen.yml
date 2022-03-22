@@ -1,0 +1,54 @@
+require: dotenv/config
+overwrite: true
+schema:
+  - '${NEXT_PUBLIC_API_PATH}/graphql'
+generates:
+  generated/graphql.ts:
+    documents:
+      [
+        'queries/**/*.ts'
+        # 'pages/**/*.ts',
+        # 'pages/**/*.tsx'
+      ]
+    plugins:
+      - add: { content: '// THIS FILE IS GENERATED, DO NOT EDIT!' }
+      - add: { content: '/* tslint:disable */' }
+      - add: { content: '/* eslint-disable */' }
+      - add: { content: '// @ts-nocheck' }
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+  generated/schema.json:
+    plugins:
+      - introspection
+config:
+  scalars:
+    # A field whose value is a generic Universally Unique Identifier: https://en.wikipedia.org/wiki/Universally_unique_identifier.
+    UUID: string
+    BigDecimal: number
+    JSON: '{ [key: string]: any }'
+    AgreementNumber: string
+    #  A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+    DateTime: Date
+    # The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+    JSONObject: '{ [key: string]: any }'
+    # Floats that will have a value greater than 0.
+    PositiveFloat: number
+    # A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt. */
+    URL: string
+    # The `Upload` scalar type represents a file upload
+    Upload: any
+
+  namingConvention:
+    typeNames: change-case#pascalCase
+    enumValues: change-case#upperCase
+  addUnderscoreToArgsType: true
+  withComponent: false
+  withHOC: false
+  withHooks: true
+  noNamespaces: false
+  preResolveTypes: true
+  skipTypename: true
+  nonOptionalTypename: true
+  immutableTypes: true
+  exportFragmentSpreadSubTypes: true

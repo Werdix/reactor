@@ -1,0 +1,45 @@
+{
+    "Gyms":[
+    {
+    "id": "1",
+    "gymName": "Suncity",
+    "score": 1057,
+    "countRate": 12,
+    "address": "OC Pyramida, Třída Míru 92, Pardubice",
+    "info": "Na ploše 2000m2 naleznete vše, co potřebujete pro dokonalý fitness trénink. K dispozici jsou vám špičkoví osobní trenéři, pod jejichž vedením dosáhnete rychle a efektivně požadovaných výsledků a vysněných cílů. Moderní Fitness Sun City Pardubice je vybaveno špičkovými stroji Technogym a Life Fitness, velkou kardio zónou se 40 kardio stanovišti, moderními polyuretanovými činkami."
+}, {
+    "id": "2",
+    "gymName": "Gym22",
+    "score": 1254,
+    "countRate": 15,
+    "address": "Sukova 292, Pardubice",
+    "info": "Lorem ipsum"
+}, {
+    "id": "3",
+    "gymName": "MacakGym",
+    "score": 2106,
+    "countRate": 22,
+    "address": "Dubina 306, Pardubice",
+    "info": "Lorem ipsum"
+}, {
+    "id": "4",
+    "gymName": "MacakGym",
+    "score": 2106,
+    "countRate": 22,
+    "address": "Dubina 306, Pardubice",
+    "info": "Lorem ipsum"
+}, {
+    "id": "5",
+    "gymName": "MacakGym",
+    "score": 2106,
+    "countRate": 22,
+    "address": "Dubina 306, Pardubice",
+    "info": "Lorem ipsum"
+}, {
+    "id": "6",
+    "gymName": "MacakGym",
+    "score": 2106,
+    "countRate": 22,
+    "address": "Dubina 306, Pardubice",
+    "info": "Lorem ipsum"
+}]}

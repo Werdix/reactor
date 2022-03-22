@@ -2,23 +2,52 @@ import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Slider } from "../Components/Slider";
 import styles from '../styles/Home.module.css';
+import {theme} from '../Components/theme';
 
-const GymBox = styled.div`
-    
-    
+type divStates = 'minimized' | 'maximized'
+
+type GymProps = {
+    state: divStates
+}
+
+const GymBox = styled.div<GymProps>`
     border-radius: 10px;
-    width: 360px;
-    height: 240px;
+    width: ${({state}) =>state=='minimized'?theme.size.minimizedW : theme.size.maximizedW};
+    height:${({state}) =>state=='minimized'?theme.size.minimizedH : theme.size.maximizedH} ;
     margin: 0px 60px 60px 40px; 
     background-color: #543c52;
     padding-left:35px;
     color: white;
+    transition: width 2s, height 2s;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) ;
     &:hover{
         cursor: pointer;
-    }
+        width: 200%;
+        height: 200%;
+    } 
     `;
-
+  const gymDetails = [{
+    id: 1,
+    gymName: "Suncity",
+    score: 1057,
+    countRate: 12,
+    address: "OC Pyramida, Třída Míru 92, Pardubice",
+    info: "Na ploše 2000m2 naleznete vše, co potřebujete pro dokonalý fitness trénink. K dispozici jsou vám špičkoví osobní trenéři, pod jejichž vedením dosáhnete rychle a efektivně požadovaných výsledků a vysněných cílů. Moderní Fitness Sun City Pardubice je vybaveno špičkovými stroji Technogym a Life Fitness, velkou kardio zónou se 40 kardio stanovišti, moderními polyuretanovými činkami."
+}, {
+    id: 2,
+    gymName: "Gym22",
+    score: 1254,
+    countRate: 15,
+    address: "Sukova 292, Pardubice",
+    info: 'Lorem ipsum'
+}, {
+    id: 3,
+    gymName: "MacakGym",
+    score: 2106,
+    countRate: 22,
+    address: "Dubina 306, Pardubice",
+    info: 'Lorem ipsum'
+}];
 const RateButton = styled.button`
 width: 55px;
 height: 30px;
@@ -32,34 +61,11 @@ margin-top:12px;
 `;
 
 export const Gym: FC = () => {
-
-    const [isOpened, divMaximize] = useState(false);
+    const [isOpened, divMaximize] = useState(true);
     
-    const gymDetails = [{
-        id: 1,
-        gymName: "Suncity",
-        score: 1057,
-        countRate: 12,
-        address: "OC Pyramida, Třída Míru 92, Pardubice",
-        info: "Na ploše 2000m2 naleznete vše, co potřebujete pro dokonalý fitness trénink. K dispozici jsou vám špičkoví osobní trenéři, pod jejichž vedením dosáhnete rychle a efektivně požadovaných výsledků a vysněných cílů. Moderní Fitness Sun City Pardubice je vybaveno špičkovými stroji Technogym a Life Fitness, velkou kardio zónou se 40 kardio stanovišti, moderními polyuretanovými činkami."
-    }, {
-        id: 2,
-        gymName: "Gym22",
-        score: 1254,
-        countRate: 15,
-        address: "Sukova 292, Pardubice",
-        info: 'Lorem ipsum'
-    }, {
-        id: 3,
-        gymName: "MacakGym",
-        score: 2106,
-        countRate: 22,
-        address: "Dubina 306, Pardubice",
-        info: 'Lorem ipsum'
-    }];
     return (
         gymDetails.map(({ id, gymName, score, countRate, address, info }) => (<>
-            <GymBox key={id} onClick={() => divMaximize((prev) => !prev)} className={isOpened ? 'isOpened' : 'notOpened'}><h2 key={id}>{gymName}</h2>
+            <GymBox state="maximized" key={id} onClick={() => divMaximize((prev) => !prev)} ><h2 key={id}>{gymName}</h2>
                 <h5 className={styles.Rating} key={id}>Rating: {Math.round(score / countRate)}%</h5>
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Info: {info}</div>
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Adresa: {address}</div>
@@ -83,6 +89,7 @@ export const Gym: FC = () => {
                         display:none; 
                     }   
                 `}</style>
+                
             </>
         ))
     )

@@ -12,9 +12,6 @@ type ToDoItem = {
     id: string;
 }
 
-type Props = {
-
-}
 export const StyledButton = styled.button`
     background-color: navy;
     width:60px;
