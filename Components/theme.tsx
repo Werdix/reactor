@@ -1,9 +1,9 @@
 export const theme = {
     size: {
-        minimizedH:'360px',
-        maximizedH:'520px',
-        minimizedW:'420px',
-        maximizedW:'200%'
+        minimizedH:'320px',
+        maximizedH:'150%',
+        minimizedW:'380px',
+        maximizedW:'120%'
 
     },
 };

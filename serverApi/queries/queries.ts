@@ -1,22 +1,36 @@
 import { gql } from 'apollo-server-micro';
 
+
 // ****************************
 /* graphql gql types  */
 // ****************************
 
+
 export const queries = gql`
   type Query {
-    Gyms: [Gym!]!
-       
+    users: [User!]!
+    locales: [LOCALE!]!   
+    gyms: [Gym!]! 
   }
  
-  type Gym {
-    gymName: String!
-    id: String!
-    score:Int!
-    countRate:Int!
-    address:String!
-    info:String!
+type Gym{
+id:Int!
+gymName:String
+address:String
+countRate:Int!
+score:Int!
+}
+
+  type User {
+    name: String!
+    id: ID!
+    locale: LOCALE
+    picture: String
+    email: String
   }
   
+  enum LOCALE {
+   CS
+   EN
+  }
 `;

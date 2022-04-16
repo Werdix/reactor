@@ -7,29 +7,33 @@ import {
     NextApiRequest,
     NextApiResponse,
   } from 'next';
+import { Gym } from '../../Components/Gym';
 import { mutations } from '../../serverApi/mutations/mutations';
 import { queries } from '../../serverApi/queries/queries';
-//import  {resolvers}  from '../../serverApi/resolvers';
-  const typeDefs = gql`
-    type Query {
-    Gyms: [Gym!]!
-    }
-    type Gym {
-    id: String!
-    gymName: String!
-    countRate:Int
-    score: Int
-    info: String!
-    address: String!
-    }
-  `;
-  const resolvers = {
-    Query: {
-      Gyms(parent:any, args:any, context:any) {
-        return [{ gymName: "Gym22" }];
-      },
-    },
-  };
+import  {resolvers}  from '../../serverApi/resolvers';
+ // const typeDefs = gql`
+    //type Query {
+    //Gyms: [Gym!]!
+    //}
+
+    //type Gym {
+    //id: String!
+    //gymName: String!
+    //countRate:Int
+    //score: Int
+    //info: String!
+    //address: String!
+    //longitude:Float
+    //latitude:Float
+    //}
+  //`;
+  //const resolvers = {
+    //Query: {
+      //Gyms(parent:any, args:any, context:any) {
+        //return [Gym];
+      //},
+    //},
+  //};
 
   const apolloServer = new ApolloServer({ typeDefs:[mutations,queries], resolvers, plugins:[ApolloServerPluginLandingPageGraphQLPlayground()] });
   const startServer = apolloServer.start();
