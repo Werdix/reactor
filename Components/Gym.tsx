@@ -6,6 +6,7 @@ import {theme} from '../Components/theme';
 import { useGymsQuery } from "../generated/graphql";
 
 
+
 type divStates = 'minimized' | 'maximized'
 
 type GymProps = {
@@ -51,7 +52,7 @@ export const Gym:FC = () => {
     
     return (<>
         {data?.gyms.map(({ id, gymName, score, countRate, address }) => (<>
-            <GymBox state="minimized" key={id} onClick={() => divMaximize((prev) => !prev)} ><h2 key={id}>{gymName}</h2>
+            <GymBox state="minimized" key={id} onClick={() => divMaximize((prev) => !prev)}><h2 key={id}>{gymName}</h2>
                 <h5 className={styles.Rating} key={id}>Rating: {Math.round(score / countRate)}%</h5>
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Info: </div><br/>
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Adresa: {address}</div>

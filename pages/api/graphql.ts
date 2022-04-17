@@ -7,7 +7,6 @@ import {
     NextApiRequest,
     NextApiResponse,
   } from 'next';
-import { Gym } from '../../Components/Gym';
 import { mutations } from '../../serverApi/mutations/mutations';
 import { queries } from '../../serverApi/queries/queries';
 import  {resolvers}  from '../../serverApi/resolvers';
