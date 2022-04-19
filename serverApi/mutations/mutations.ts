@@ -17,9 +17,9 @@ export const mutations = gql`
     locale: LOCALE
   }
   input UpdateRatingInput{
-  id:Int!
-  countRate:Int!
-  score:Int!
+  id:Int
+  countRate:Int
+  score:Int
   }
   
  

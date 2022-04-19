@@ -5,9 +5,9 @@ import { getApolloClient } from '../lib/apollo';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const client = getApolloClient();
+  console.log(client);
   return <ApolloProvider client={client}>
   <Component {...pageProps} />
   </ApolloProvider>
 }
-
 export default MyApp

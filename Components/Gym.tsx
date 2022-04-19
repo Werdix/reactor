@@ -29,18 +29,6 @@ const GymBox = styled.div<GymProps>`
         height: 200%;
     } 
     `;
-  
-const RateButton = styled.button`
-width: 55px;
-height: 30px;
-background-color: #f55951;
-color: #f1e8e6;
-font-weight: bold;
-font-family: sans-serif;
-border-width: 2px;
-border-radius: 13px;
-margin-top:10px;
-`;
 
 export const Gym:FC = () => {
     const { loading, error, data } = useGymsQuery();
@@ -49,7 +37,6 @@ export const Gym:FC = () => {
     if (error) return <div>Error</div>;
 
     const [isOpened, divMaximize] = useState(true);
-    
     return (<>
         {data?.gyms.map(({ id, gymName, score, countRate, address }) => (<>
             <GymBox state="minimized" key={id} onClick={() => divMaximize((prev) => !prev)}><h2 key={id}>{gymName}</h2>
@@ -57,8 +44,6 @@ export const Gym:FC = () => {
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Info: </div><br/>
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Adresa: {address}</div>
                 <Slider/>
-                <RateButton type="button">Rate!</RateButton>
-                
                 </GymBox>
                 <style jsx>{`
                     .isOpened{

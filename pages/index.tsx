@@ -6,7 +6,6 @@ import styles from '../styles/Home.module.css'
 import { ToDo } from '../Components/to-do'
 import {Gym} from '../Components/Gym'
 import {SearchBar} from '../Components/SearchBar';
-
 import { GymList } from '../Components/GymList'
 
 

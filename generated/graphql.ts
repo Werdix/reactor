@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 // @ts-nocheck
-import { gql } from '@apollo/client';
+import { ApolloProvider, gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -34,11 +34,17 @@ export enum Locale {
 
 export type Mutation = {
   readonly updateProfile?: Maybe<User>;
+  readonly updateRating?: Maybe<Gym>;
 };
 
 
 export type MutationUpdateProfileArgs = {
   input: UpdateProfileInput;
+};
+
+
+export type MutationUpdateRatingArgs = {
+  input: UpdateRatingInput;
 };
 
 export type Query = {
@@ -50,6 +56,12 @@ export type Query = {
 export type UpdateProfileInput = {
   readonly locale?: InputMaybe<Locale>;
   readonly name?: InputMaybe<Scalars['String']>;
+};
+
+export type UpdateRatingInput = {
+  readonly countRate: Scalars['Int'];
+  readonly id: Scalars['Int'];
+  readonly score: Scalars['Int'];
 };
 
 export type User = {
