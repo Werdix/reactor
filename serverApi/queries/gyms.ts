@@ -1,9 +1,7 @@
 import { getCollection } from "../lib/db"
 
-
-
 type Gym={
-  id:Number
+  id:String
   gymName:String
   address:String
   countRate:Number

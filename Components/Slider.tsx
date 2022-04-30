@@ -1,5 +1,6 @@
 import { FC,useState } from "react";
 import styled from "styled-components";
+import { useUpdateRatingMutation } from "../generated/graphql";
 import {gql} from '@apollo/client'
 const RateSlider = styled.div`
     
@@ -21,12 +22,28 @@ border-radius: 13px;
 margin-top:10px;
 `;
 
-export const Slider : FC = () =>{
+interface LayoutProps {
+    id: string;
+}
+
+export const Slider : FC<LayoutProps> = ({id}) =>{
     
     const [rateValue,setSliderValue] = useState(1) 
+    const [updateRating,{loading,error}] = useUpdateRatingMutation()
+    
+    if (loading) return <div>Loading...</div>
+    if (error) return <div>An Error Occurred</div>
 
-    return(<RateSlider>
-        <form>
+    return(<RateSlider key={id}>
+        <form onSubmit={e=>{ 
+            e.preventDefault();
+            updateRating({
+                variables:{
+                    count: 1,
+                    rating: rateValue,
+                    id:id
+                }
+            })}}>
         <input className="notOpened" id="#slider" type="range" min={1} max={100} value={rateValue} onChange={(
                 ev: React.ChangeEvent<HTMLInputElement>,
             ): void => {

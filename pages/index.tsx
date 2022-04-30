@@ -17,7 +17,7 @@ const Home: NextPage = () => {
        
         <link rel="icon" href="/favicon.ico" />
       </Head>
-     
+     <a href='../Components/Login.tsx'>Log In</a>
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to GymFinder

@@ -9,7 +9,7 @@ import { gql } from 'apollo-server-micro';
 export const mutations = gql`
   type Mutation {
     updateProfile(input: UpdateProfileInput!): User
-    updateRating(input: UpdateRatingInput!):Gym
+    updateRating(id:ID!,input: UpdateRatingInput!):Gym
   }
  
   input UpdateProfileInput {
@@ -17,10 +17,7 @@ export const mutations = gql`
     locale: LOCALE
   }
   input UpdateRatingInput{
-  id:Int
-  countRate:Int
-  score:Int
+  countRate:Int!
+  score:Int!
   }
-  
- 
 `;

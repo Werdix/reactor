@@ -1,6 +1,7 @@
 import * as admin from 'firebase-admin';
 import * as serviceAccount from '../firebase.config.json';
 import { getFirestore } from 'firebase-admin/firestore';
+
 const createApp = ()=>{
   
   return admin.initializeApp({

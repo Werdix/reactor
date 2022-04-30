@@ -14,7 +14,7 @@ export const queries = gql`
   }
  
 type Gym{
-id:Int!
+id:ID!
 gymName:String
 address:String
 countRate:Int!

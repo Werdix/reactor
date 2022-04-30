@@ -11,7 +11,7 @@ type LocaleEntity = {
 const ensureLocales = async () => {
   
   const collectionsNames = (await db().listCollections()).map(col => col.id);
-  console.log(collectionsNames)
+  
   
   if (!collectionsNames.includes('locales')) {
     const col = getCollection<LocaleEntity>('locales')  

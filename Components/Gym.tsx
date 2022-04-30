@@ -4,11 +4,16 @@ import { Slider } from "../Components/Slider";
 import styles from '../styles/Home.module.css';
 import {theme} from '../Components/theme';
 import { useGymsQuery } from "../generated/graphql";
+import { useUserContext } from "./userContext";
+
 
 type divStates = 'minimized' | 'maximized'
 
 type GymProps = {
     state: divStates
+}
+interface LayoutProps {
+    id: string;
 }
 
 const GymBox = styled.div<GymProps>`
@@ -28,9 +33,11 @@ const GymBox = styled.div<GymProps>`
     } 
     `;
 
-export const Gym:FC = () => {
+export const Gym:FC<LayoutProps> = ({id}) => {
+    
     const [isOpened, divMaximize] = useState(true);
-    const { loading, error, data } = useGymsQuery();
+    const { loading, error, data} = useGymsQuery();
+    
     if (loading) return <div>Loading</div>;
 
     if (error) return <div>Error</div>;
@@ -42,7 +49,7 @@ export const Gym:FC = () => {
                 <h5 className={styles.Rating} key={id}>Rating: {Math.round(score / countRate)}%</h5>
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Info: </div><br/>
                 <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Adresa: {address}</div>
-                <Slider/>
+                <Slider id={id}/>
                 </GymBox>
                 <style jsx>{`
                     .isOpened{
