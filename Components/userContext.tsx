@@ -28,7 +28,7 @@ export type UserContextProps = {
   userExists?: (username: string) => Promise<boolean>;
   deleteUser?: (password: string) => Promise<void>;
 };
-let auth: Auth;
+export let auth: Auth;
 //@ts-ignore
 const UserContext = React.createContext<UserContextProps>(null);
 const login = async (username: string, password: string) => {
@@ -96,7 +96,7 @@ export const UserContextProvider: React.FC = ({
         user,
         logout: hasUser ?  logout : undefined,
         login: hasUser ? undefined :  login,
-        createUser: hasUser ? undefined :  createUser,
+        createUser: hasUser ? createUser : undefined ,
         userExists: hasUser ? undefined : userExists,
         deleteUser: hasUser ?  deleteUser : undefined,
         loading,

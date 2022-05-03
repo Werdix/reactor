@@ -12,6 +12,8 @@ export const gymsQuery = gql`
 }
 `;
 
+
+
 export const updateRatingMutation = gql`
 mutation updateRating($rating:Int!,$count:Int!,$id:ID!){
     updateRating(id:$id,input:{score:$rating,countRate:$count}){

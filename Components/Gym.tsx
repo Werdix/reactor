@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { Slider } from "../Components/Slider";
 import styles from '../styles/Home.module.css';
@@ -14,6 +14,7 @@ type GymProps = {
 }
 interface LayoutProps {
     id: string;
+    key:string;
 }
 
 const GymBox = styled.div<GymProps>`
@@ -33,10 +34,12 @@ const GymBox = styled.div<GymProps>`
     } 
     `;
 
-export const Gym:FC<LayoutProps> = ({id}) => {
+export const Gym:FC<LayoutProps> = ({id,key}) => {
     
     const [isOpened, divMaximize] = useState(true);
-    const { loading, error, data} = useGymsQuery();
+    const {user} = useUserContext()
+    const { loading, error, data} = useGymsQuery({skip:!user});
+    
     
     if (loading) return <div>Loading</div>;
 
@@ -45,11 +48,11 @@ export const Gym:FC<LayoutProps> = ({id}) => {
     
     return (<>
         {data?.gyms.map(({ id, gymName, score, countRate, address }) => (<>
-            <GymBox state="minimized" key={id} onClick={() => divMaximize((prev) => !prev)}><h2 key={id}>{gymName}</h2>
-                <h5 className={styles.Rating} key={id}>Rating: {Math.round(score / countRate)}%</h5>
-                <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Info: </div><br/>
-                <div key={id} className={isOpened ? 'infoOpened' : 'infoClosed'}>Adresa: {address}</div>
-                <Slider id={id}/>
+            <GymBox state="minimized" key={id.toString()} onClick={() => divMaximize((prev) => !prev)}><h2 key={id.toString()}>{gymName}</h2>
+                <h5 className={styles.Rating} key={id.toString()}>Rating: {Math.round(score / countRate)}%</h5>
+                <div key={id.toString()} className={isOpened ? 'infoOpened' : 'infoClosed'}>Info: </div><br/>
+                <div key={id.toString()} className={isOpened ? 'infoOpened' : 'infoClosed'}>Adresa: {address}</div>
+                <Slider key={id.toString()} id={""} disabled={false}/>
                 </GymBox>
                 <style jsx>{`
                     .isOpened{
@@ -65,10 +68,9 @@ export const Gym:FC<LayoutProps> = ({id}) => {
                     height: 110%;
                     }
                     .infoClosed{
-                        display:none; 
+                     display:none; 
                     }   
                 `}</style>
-                
             </>
         ))}</>
     )

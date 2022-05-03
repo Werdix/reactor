@@ -122,6 +122,18 @@
   margin-left: 0.5rem;
 }
 
+.navbar{
+  border: 2px solid;
+  border-width: 3px;
+  border-color: darkslategray;
+  background-color: dimgrey;
+ 
+}
+.navbarConteiner{
+  display: flex;
+  flex-direction: row;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
