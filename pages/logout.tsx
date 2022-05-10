@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
-import React,{FC, useState} from "react";
+import React,{FC} from "react";
 import { useUserContext } from "../Components/userContext";
 
 
-const logout:FC = () => {
-    const {user,logout} = useUserContext()
+const Logout:FC = () => {
+    const {logout} = useUserContext()
     const router = useRouter()
     logout?.();
     router.push('/')
@@ -12,4 +12,4 @@ const logout:FC = () => {
     return(<>
     </>)
 }
-export default logout
+export default Logout

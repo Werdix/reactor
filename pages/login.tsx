@@ -17,7 +17,7 @@ const Login:FC =() =>{
       }
     }
     catch(e){
-      return 
+      return e;
     }
     
   };
