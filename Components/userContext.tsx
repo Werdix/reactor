@@ -54,8 +54,7 @@ const userExists = async (email: string) => {
     const signInMethods = await fetchSignInMethodsForEmail(auth, email);
     return !!signInMethods.length;
   } catch (e) {
-    if (e?.code !== 'auth/invalid-email') throw e;
-    return false;
+    if (e?.code !== 'auth/invalid-email') return false;
   }
 };
 
@@ -96,7 +95,7 @@ export const UserContextProvider: React.FC = ({
         user,
         logout: hasUser ?  logout : undefined,
         login: hasUser ? undefined :  login,
-        createUser: hasUser ? createUser : undefined ,
+        createUser: hasUser ? undefined : createUser ,
         userExists: hasUser ? undefined : userExists,
         deleteUser: hasUser ?  deleteUser : undefined,
         loading,

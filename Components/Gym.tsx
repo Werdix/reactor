@@ -15,6 +15,7 @@ type GymProps = {
 interface LayoutProps {
     id: string;
     key:string;
+    Disabled:boolean;
 }
 
 const GymBox = styled.div<GymProps>`
@@ -34,11 +35,15 @@ const GymBox = styled.div<GymProps>`
     } 
     `;
 
-export const Gym:FC<LayoutProps> = ({id,key}) => {
+export const Gym:FC<LayoutProps> = ({id,key,Disabled}) => {
     
     const [isOpened, divMaximize] = useState(true);
     const {user} = useUserContext()
-    const { loading, error, data} = useGymsQuery({skip:!user});
+    const { loading, error, data} = useGymsQuery();
+    const [isDisabled] = useState(Disabled)
+    if(!user?.user.email){
+      Disabled = true;  
+    } else Disabled = false;
     
     
     if (loading) return <div>Loading</div>;
@@ -52,7 +57,7 @@ export const Gym:FC<LayoutProps> = ({id,key}) => {
                 <h5 className={styles.Rating} key={id.toString()}>Rating: {Math.round(score / countRate)}%</h5>
                 <div key={id.toString()} className={isOpened ? 'infoOpened' : 'infoClosed'}>Info: </div><br/>
                 <div key={id.toString()} className={isOpened ? 'infoOpened' : 'infoClosed'}>Adresa: {address}</div>
-                <Slider key={id.toString()} id={""} disabled={false}/>
+                <Slider key={id.toString()} id={id.toString()} Disabled={isDisabled}/>
                 </GymBox>
                 <style jsx>{`
                     .isOpened{

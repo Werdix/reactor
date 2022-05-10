@@ -8,22 +8,35 @@ const Login:FC =() =>{
   const [email,setEmail] = useState("");
   const[password,setPassword] = useState(""); 
   const {login, user} = useUserContext();
-  const login2 = () =>{
-    if(login){
-      login(email,password);
+  const login2 = async () =>{
+    
+    try{
+      if(login){
+       let x = await login(email,password)
+       console.log(x)
+      }
     }
+    catch(e){
+      return 
+    }
+    
   };
 if(user?.user.email){
   router.push('/')
 }
+
   return (
   <>
   <h1>Log In</h1>
   <form>
-    <label>Email:</label>
+  <div className="mb-3">
+    <label htmlFor="email">Email:</label>
     <input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} required/>
-    <label>Password:</label>
+    </div>
+    <div className="mb-3">
+    <label htmlFor="password">Password:</label>
     <input type="password" name="password" onChange={(e)=>setPassword(e.target.value)}/>
+    </div>
     <button type="button" onClick={()=>login2()}>Log In</button>
   </form>
   </>

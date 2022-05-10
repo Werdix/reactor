@@ -1,7 +1,6 @@
 import { FC,useState } from "react";
 import styled from "styled-components";
 import { useUpdateRatingMutation } from "../generated/graphql";
-import {gql} from '@apollo/client'
 import { useUserContext } from "./userContext";
 const RateSlider = styled.div`
     
@@ -25,18 +24,20 @@ margin-top:10px;
 
 interface LayoutProps {
     id: string;
-    disabled:boolean;
+    Disabled:boolean;
 }
 
-export const Slider : FC<LayoutProps> = ({id,disabled}) =>{
+export const Slider : FC<LayoutProps> = ({id,Disabled}) =>{
     
     const [rateValue,setSliderValue] = useState(1) 
     const [updateRating,{loading,error}] = useUpdateRatingMutation()
     const {user} = useUserContext();
-    const [isDisabled,setDisabled] = useState(disabled ? true:false)
-    if(!user){
-        disabled = true
+    if(user?.user.email==undefined){
+        Disabled = false
     }
+    else Disabled = true;
+    const [isDisabled] = useState(Disabled)
+    
 
     if (loading) return <div>Loading...</div>
     if (error) return <div>An Error Occurred</div>
@@ -56,9 +57,8 @@ export const Slider : FC<LayoutProps> = ({id,disabled}) =>{
             ): void => {
                 setSliderValue(
                     parseInt(ev.target.value, 10),
-                )}}></input>
+                )}}/>
         <div>Your Rating!: {rateValue} %</div>
-        
         <RateButton disabled={isDisabled} id="rateB" type="submit">Rate!</RateButton>
         </form>
     </RateSlider>)   
