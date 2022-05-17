@@ -1,5 +1,5 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-export const GymDetail:FC = () =>{
-    return(<></>);
-}
+export const GymDetail: FC = () => {
+  return <></>;
+};

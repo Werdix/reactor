@@ -100,7 +100,7 @@ module.exports = {
         },
       ],
       'unicorn/filename-case': [
-        'error',
+        'off',
         {
           case: 'kebabCase',
           ignore: ['^use'],

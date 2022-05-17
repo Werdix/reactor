@@ -1,16 +1,16 @@
-import Document, { DocumentContext } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import { getDataFromTree } from '@apollo/client/react/ssr';
+import Document, { DocumentContext } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
+
 import { getApolloClient } from '../lib/apollo';
-import { getDataFromTree } from "@apollo/client/react/ssr";
 
 export default class MyDocument extends Document {
-  
   static async getInitialProps(ctx: DocumentContext) {
     const apolloClient = getApolloClient(true);
-    //@ts-ignore 
+    // @ts-ignore
     await getDataFromTree(<ctx.AppTree {...ctx.appProps} />);
-    
-    const sheet = new ServerStyleSheet()
+
+    const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
     try {
@@ -18,13 +18,13 @@ export default class MyDocument extends Document {
         originalRenderPage({
           enhanceApp: (App) => (props) =>
             sheet.collectStyles(<App {...props} />),
-        })
+        });
 
       const initialProps = await Document.getInitialProps(ctx);
 
       /**
-     * Extract the cache to pass along to the client so the queries are "hydrated" and don't need to actually request the data again!
-     */
+       * Extract the cache to pass along to the client so the queries are "hydrated" and don't need to actually request the data again!
+       */
       const apolloState = apolloClient.extract();
 
       return {
@@ -35,10 +35,10 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
           </>
         ),
-        apolloState
-      }
+        apolloState,
+      };
     } finally {
-      sheet.seal()
+      sheet.seal();
     }
   }
 }

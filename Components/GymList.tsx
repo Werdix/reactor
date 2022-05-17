@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { Gym } from "./Gym";
+import { FC } from 'react';
 
+import { Gym } from './Gym';
 
-export const GymList:FC = () =>{
-    return(<Gym key={""} id={""} />)
-}
+export const GymList: FC = () => {
+  return <Gym key={''} id={''} />;
+};
